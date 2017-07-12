@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>星林的窗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="####登录到服务器（我这里用的是ubuntu)ssh -l root 123.207.244.252    #root为用户名 ####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）ssh-keygen -t rsa ####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限less i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="星林的窗">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/建立SSH连接/index.html">
+<meta property="og:site_name" content="星林的窗">
+<meta property="og:description" content="####登录到服务器（我这里用的是ubuntu)ssh -l root 123.207.244.252    #root为用户名 ####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）ssh-keygen -t rsa ####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限less i">
+<meta property="og:updated_time" content="2017-07-12T19:18:36.065Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="星林的窗">
+<meta name="twitter:description" content="####登录到服务器（我这里用的是ubuntu)ssh -l root 123.207.244.252    #root为用户名 ####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）ssh-keygen -t rsa ####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限less i">
+  
+    <link rel="alternate" href="/atom.xml" title="星林的窗" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">星林的窗</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一天进步一点</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-建立SSH连接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/13/建立SSH连接/" class="article-date">
+  <time datetime="2017-07-12T19:18:58.757Z" itemprop="datePublished">2017-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####登录到服务器（我这里用的是ubuntu)<br><code>ssh -l root 123.207.244.252    #root为用户名</code></p>
+<p>####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）<br><code>ssh-keygen -t rsa</code></p>
+<p>####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限<br><code>less id_rsa.pub &gt; authorized_keys 
+chmod 777 authorized_keys</code></p>
+<p>####将秘钥从服务端下载下来保存到本地用户目录下的.ssh文件夹下<br><code>scp -r root@123.207.244.252:~/.ssh/id_rsa ~/.ssh/id_rsa</code></p>
+<p>####之后访问服务器就不需要密码了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/13/建立SSH连接/" data-id="cj51epg5w00015si4khh5t6sn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/13/建立SSH连接/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xingling<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
