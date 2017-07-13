@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>星林的窗</title>
+  <subtitle>一天进步一点</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-12T19:18:36.065Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>xingling</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/07/13/%E5%BB%BA%E7%AB%8BSSH%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://yoursite.com/2017/07/13/建立SSH连接/</id>
+    <published>2017-07-12T19:18:58.757Z</published>
+    <updated>2017-07-12T19:18:36.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>####登录到服务器（我这里用的是ubuntu)<br><code>ssh -l root 123.207.244.252    #root为用户名</code></p>
+<p>####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）<br><code>ssh-keygen -t rsa</code></p>
+<p>####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限<br><code>less id_rsa.pub &gt; authorized_keys 
+chmod 777 authorized_keys</code></p>
+<p>####将秘钥从服务端下载下来保存到本地用户目录下的.ssh文件夹下<br><code>scp -r root@123.207.244.252:~/.ssh/id_rsa ~/.ssh/id_rsa</code></p>
+<p>####之后访问服务器就不需要密码了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####登录到服务器（我这里用的是ubuntu)&lt;br&gt;&lt;code&gt;ssh -l root 123.207.244.252    #root为用户名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/07/13/hello-world/"/>
+    <id>http://yoursite.com/2017/07/13/hello-world/</id>
+    <published>2017-07-12T18:55:40.683Z</published>
+    <updated>2017-07-12T18:55:40.683Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
