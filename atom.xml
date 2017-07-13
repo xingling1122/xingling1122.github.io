@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-12T19:18:36.065Z</updated>
+  <updated>2017-07-13T01:53:32.801Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,24 +16,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>建立SSH连接</title>
     <link href="http://yoursite.com/2017/07/13/%E5%BB%BA%E7%AB%8BSSH%E8%BF%9E%E6%8E%A5/"/>
     <id>http://yoursite.com/2017/07/13/建立SSH连接/</id>
     <published>2017-07-12T19:18:58.757Z</published>
-    <updated>2017-07-12T19:18:36.065Z</updated>
+    <updated>2017-07-13T01:53:32.801Z</updated>
     
-    <content type="html"><![CDATA[<p>####登录到服务器（我这里用的是ubuntu)<br><code>ssh -l root 123.207.244.252    #root为用户名</code></p>
-<p>####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）<br><code>ssh-keygen -t rsa</code></p>
-<p>####在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限<br><code>less id_rsa.pub &gt; authorized_keys 
+    <content type="html"><![CDATA[<p>为了方便与服务器的连接，避免每次都需输入密码，可采用SSH连接方式代替Http连接，这里简要介绍如何进行连接</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>###登录到服务器（我这里用的是ubuntu)<br><code>ssh -l root 123.207.244.252    #root为用户名</code></p>
+<p>###在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服务器上产生）<br><code>ssh-keygen -t rsa</code></p>
+<p>###在.ssh文件夹内创建authorized_keys文件，同时将刚刚产生的公钥复制到里面，并且修改文件权限<br><code>less id_rsa.pub &gt; authorized_keys 
 chmod 777 authorized_keys</code></p>
-<p>####将秘钥从服务端下载下来保存到本地用户目录下的.ssh文件夹下<br><code>scp -r root@123.207.244.252:~/.ssh/id_rsa ~/.ssh/id_rsa</code></p>
-<p>####之后访问服务器就不需要密码了</p>
+<p>###将秘钥从服务端下载下来保存到本地用户目录下的.ssh文件夹下<br><code>scp -r root@123.207.244.252:~/.ssh/id_rsa ~/.ssh/id_rsa</code></p>
+<p>###之后访问服务器就不需要密码了</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;####登录到服务器（我这里用的是ubuntu)&lt;br&gt;&lt;code&gt;ssh -l root 123.207.244.252    #root为用户名&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;####在服务器产生公钥和秘钥（其它主机上产生也行，不过为了其它终端能方便的获取到秘钥，推荐在服
+      &lt;p&gt;为了方便与服务器的连接，避免每次都需输入密码，可采用SSH连接方式代替Http连接，这里简要介绍如何进行连接&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick St
     
     </summary>
     
