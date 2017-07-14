@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-14T08:09:52.661Z</updated>
+  <updated>2017-07-14T08:12:05.407Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2017/07/14/Selector%E7%9A%84%E5%90%84%E7%A7%8D%E7%8A%B6%E6%80%81%E8%AF%A6%E8%A7%A3/"/>
     <id>http://yoursite.com/2017/07/14/Selector的各种状态详解/</id>
     <published>2017-07-14T08:00:32.509Z</published>
-    <updated>2017-07-14T08:09:52.661Z</updated>
+    <updated>2017-07-14T08:12:05.407Z</updated>
     
-    <content type="html"><![CDATA[<p>Selector的属性可直接默认就行，我主要将item的各种属性：</p>
+    <content type="html"><![CDATA[<p>Selector的属性可直接默认就行，我主要讲下item的各种属性：</p>
 <pre><code>&lt;item 
 
     android:drawable=&quot;@[package:]drawable/     drawable_resource&quot;  
@@ -64,10 +64,10 @@
     
     <summary type="html">
     
-      &lt;p&gt;Selector的属性可直接默认就行，我主要将item的各种属性：&lt;/p&gt;
+      &lt;p&gt;Selector的属性可直接默认就行，我主要讲下item的各种属性：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;item 
 
-    android:drawable=&amp;quot;@[package:]drawable/     drawable_resource&amp;quot;  
+    android:drawable=&amp;quot;@[package:]drawable/     drawable_resource&amp;quot; 
     
     </summary>
     
