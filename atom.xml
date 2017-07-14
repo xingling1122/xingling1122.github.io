@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-13T15:27:18.412Z</updated>
+  <updated>2017-07-14T08:08:10.956Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/07/14/Selector%E7%9A%84%E5%90%84%E7%A7%8D%E7%8A%B6%E6%80%81%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://yoursite.com/2017/07/14/Selector的各种状态详解/</id>
+    <published>2017-07-14T08:00:32.509Z</published>
+    <updated>2017-07-14T08:08:10.956Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="title-Selector中的各种状态详解"><a href="#title-Selector中的各种状态详解" class="headerlink" title="title:Selector中的各种状态详解"></a>title:Selector中的各种状态详解</h2><p>Selector的属性可直接默认就行，我主要将item的各种属性：</p>
+<pre><code>&lt;item 
+
+    android:drawable=&quot;@[package:]drawable/     drawable_resource&quot;  
+
+     android:state_pressed=[&quot;true&quot; | &quot;false&quot;]
+
+    android:state_focused=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_hovered=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_selected=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_checkable=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_checked=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_enabled=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_activated=[&quot;true&quot; | &quot;false&quot;]
+
+     android:state_window_focused=[&quot;true&quot; | &quot;false&quot;] /&gt;
+</code></pre><p>1、android:drawable=”@[package:]drawable/drawable_resource”<br>这个是说如果系统匹配上当前这个item（也就是要使用这个item），那么就用这里设置的资源这个资源,一般都为图片。</p>
+<p>2、android:state_pressed=[“true” | “false”]<br>这个是说当前这个组件是否被按下，如果要设置按下的那一刻的状态，那么这里就要设置为true，例如，一个Button当手按下去后，还没有离开的状态(就是touched住的时候，还没有放开，和Clicked，点击时的那一刻)。</p>
+<p>3、android:state_focused=[“true” | “false”]</p>
+<p>这个是当获得焦点的时候的状态,就是当控件高亮的时候的状态，哪些情况可以造成此状态呢，比如说，轨迹球（有的手机上面有一个小球，可以用手指在上面向不同的方向滚动，滚动的时候，界面里面的焦点，就会转向滚动的方向的控件），还有就是d-pad之类的东西（比如果游戏手柄上面的上下左右键，还有键盘上面的上下左右键等）这些东西就可以控制组件上面的焦点。</p>
+<p>4、android:state_hovered=[“true” | “false”]</p>
+<p>这个是api等组在14以上才有的,这个是当光标移动到某一个组件之上的时候的状态，到目前为止，还没有看见过哪个手机设备带有鼠标之类的东西，可能这个专门是为平板电脑设置的或者以后可能出现带有鼠标之类的设备而准备的吧，文档中说，一般这个值设置为与focused这个值一样。</p>
+<p>5、android:state_selected=[“true” | “false”]</p>
+<p>这个是当一个tab被打开的状态。或者一个listView等里面一个item被选择的时候的状态,因此这个属性设置在一般的组件上面是没有用的，只有设置有作为tab或item的布局里面的项时，这个属才起作用.</p>
+<p>6、android:state_checkable=[“true” | “false”]</p>
+<p>这个是当一个组件在可以checked或不可以checked的时候的状态，现在较常见的，能够checkable的组件有，单选项和多选项，所以这个属性只有设置在像这类组件上面才有作用的。</p>
+<p>7、android:state_checked=[“true” | “false”]</p>
+<p>这个是当一个组件被checked 或者没有checked 的时候的状态，也就是说只有在可checkable上面的组件才有作用的，一般常见的就是多选按钮组与单选按钮组里面的项，这个才有作用的。</p>
+<p>8、android:state_enabled=[“true” | “false”]</p>
+<p>这个是当一个组件是否能处理touch或click事件的时候的状态，如果要对组件能否响应事件设置不同背景的时候，就要靠这个属性了.</p>
+<p>9、android:state_window_focused=[“true” | “false”]</p>
+<p>这个是是否对当前界面是否得到焦点的两种状态的设置，比如说当我们打开一个界面，那么这个界面就获得了焦点，如果我们去把“通知”拉下来，那么这个界面就失去焦点，或者弹出了一个对话框，那么这个界面也失去焦点了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;title-Selector中的各种状态详解&quot;&gt;&lt;a href=&quot;#title-Selector中的各种状态详解&quot; class=&quot;headerlink&quot; title=&quot;title:Selector中的各种状态详解&quot;&gt;&lt;/a&gt;title:Selector中
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Android内存泄漏场景</title>
