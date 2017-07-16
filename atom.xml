@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-16T11:38:45.487Z</updated>
+  <updated>2017-07-16T11:59:47.214Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Activity的启动模式总结</title>
+    <title>Activity的启动模式总结1</title>
     <link href="http://yoursite.com/2017/07/16/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/07/16/Activity的启动模式总结/</id>
     <published>2017-07-16T11:35:15.864Z</published>
-    <updated>2017-07-16T11:38:45.487Z</updated>
+    <updated>2017-07-16T11:59:47.214Z</updated>
     
     <content type="html"><![CDATA[<p>Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  </p>
 <h2 id="在AndroidMainfest里声明"><a href="#在AndroidMainfest里声明" class="headerlink" title="在AndroidMainfest里声明"></a>在AndroidMainfest里声明</h2><h3 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h3><p>这是Activity的默认启动模式，采用这种启动模式每次均会创建新的实例，无可否认，这也是最常用的启动模式  </p>
