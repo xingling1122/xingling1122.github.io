@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-16T11:35:15.908Z</updated>
+  <updated>2017-07-16T11:38:45.487Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,26 +20,23 @@
     <link href="http://yoursite.com/2017/07/16/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/07/16/Activity的启动模式总结/</id>
     <published>2017-07-16T11:35:15.864Z</published>
-    <updated>2017-07-16T11:35:15.908Z</updated>
+    <updated>2017-07-16T11:38:45.487Z</updated>
     
     <content type="html"><![CDATA[<p>Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  </p>
-<p>##在AndroidMainfest里声明</p>
-<p>###Standard<br>这是Activity的默认启动模式，采用这种启动模式每次均会创建新的实例，无可否认，这也是最常用的启动模式  </p>
-<p>###SingleTop<br>在启动时，系统会判断当前Activity所在的Task栈顶是否存在要启动的Activity，如果存在，则直接启动，否则创建新的Activity。使用情景：常用于接收到信息后显示的界面，如QQ后台接收到信息弹出Activity,如果一次来了10条信息，总不能启动10个Activity吧？所以该Activity需要声明这种启动方式。  </p>
-<p>###SingleTask<br>这种启动模式跟SingleTop很相似，不同的是，SingleTask的是系统会去检查当前整个任务栈，如果存在，则会将该栈里该Activity上面的所有Activity出栈，即该Activity移到了栈顶。如果要启动的Activity已经位于后台任务栈，则会把整个后台任务栈放到前台任务栈上面。使用情景：<br>主Activity  </p>
-<p>###SingleInstance<br>这种启动模式跟访问浏览器很相似，在很多个程序中访问浏览器时，如果当前浏览器没有打开，则打开浏览器，否则会在当前打开的浏览器里访问。<br>声明为SingleInstance的Activity会在一个新的任务栈里，而且该栈只存在这一个Activity（这就是SingleInstance）,整个系统就只会有这个实例，举例说如果应用A的任务栈中创建了该Activity,如果B也要启动该Activity,则不需要创建，两个应用共用该Activity实例。使用情景：需要与程序分离的界面，如呼叫来电界面，在Launcher中可能使用，反正几乎不会用到  </p>
-<p>##在Intent Flag里声明</p>
-<p>###Intent.FLAG_ACTIVITY_NEW_TASK<br>使用一个新的任务栈来启动该Activity,通常是在Service里启动的Activity,因为service不存在任务栈  </p>
-<p>###Intent.FLAG_ACTIVITY_SINGLE_TOP<br>类似SingleTop  </p>
-<p>###Intent.FLAG_ACTIVITY_CLEAR_TOP<br>类似SingleTop</p>
-<p>###Intent.FLAG_ACTIVITY_NO_HISTORY<br>声明为该模式的Activity，每次启动新的Activity时，该Activity均会消失，即不存在任务栈中</p>
+<h2 id="在AndroidMainfest里声明"><a href="#在AndroidMainfest里声明" class="headerlink" title="在AndroidMainfest里声明"></a>在AndroidMainfest里声明</h2><h3 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h3><p>这是Activity的默认启动模式，采用这种启动模式每次均会创建新的实例，无可否认，这也是最常用的启动模式  </p>
+<h3 id="SingleTop"><a href="#SingleTop" class="headerlink" title="SingleTop"></a>SingleTop</h3><p>在启动时，系统会判断当前Activity所在的Task栈顶是否存在要启动的Activity，如果存在，则直接启动，否则创建新的Activity。使用情景：常用于接收到信息后显示的界面，如QQ后台接收到信息弹出Activity,如果一次来了10条信息，总不能启动10个Activity吧？所以该Activity需要声明这种启动方式。  </p>
+<h3 id="SingleTask"><a href="#SingleTask" class="headerlink" title="SingleTask"></a>SingleTask</h3><p>这种启动模式跟SingleTop很相似，不同的是，SingleTask的是系统会去检查当前整个任务栈，如果存在，则会将该栈里该Activity上面的所有Activity出栈，即该Activity移到了栈顶。如果要启动的Activity已经位于后台任务栈，则会把整个后台任务栈放到前台任务栈上面。使用情景：<br>主Activity  </p>
+<h3 id="SingleInstance"><a href="#SingleInstance" class="headerlink" title="SingleInstance"></a>SingleInstance</h3><p>这种启动模式跟访问浏览器很相似，在很多个程序中访问浏览器时，如果当前浏览器没有打开，则打开浏览器，否则会在当前打开的浏览器里访问。<br>声明为SingleInstance的Activity会在一个新的任务栈里，而且该栈只存在这一个Activity（这就是SingleInstance）,整个系统就只会有这个实例，举例说如果应用A的任务栈中创建了该Activity,如果B也要启动该Activity,则不需要创建，两个应用共用该Activity实例。使用情景：需要与程序分离的界面，如呼叫来电界面，在Launcher中可能使用，反正几乎不会用到  </p>
+<h2 id="在Intent-Flag里声明"><a href="#在Intent-Flag里声明" class="headerlink" title="在Intent Flag里声明"></a>在Intent Flag里声明</h2><h3 id="Intent-FLAG-ACTIVITY-NEW-TASK"><a href="#Intent-FLAG-ACTIVITY-NEW-TASK" class="headerlink" title="Intent.FLAG_ACTIVITY_NEW_TASK"></a>Intent.FLAG_ACTIVITY_NEW_TASK</h3><p>使用一个新的任务栈来启动该Activity,通常是在Service里启动的Activity,因为service不存在任务栈  </p>
+<h3 id="Intent-FLAG-ACTIVITY-SINGLE-TOP"><a href="#Intent-FLAG-ACTIVITY-SINGLE-TOP" class="headerlink" title="Intent.FLAG_ACTIVITY_SINGLE_TOP"></a>Intent.FLAG_ACTIVITY_SINGLE_TOP</h3><p>类似SingleTop  </p>
+<h3 id="Intent-FLAG-ACTIVITY-CLEAR-TOP"><a href="#Intent-FLAG-ACTIVITY-CLEAR-TOP" class="headerlink" title="Intent.FLAG_ACTIVITY_CLEAR_TOP"></a>Intent.FLAG_ACTIVITY_CLEAR_TOP</h3><p>类似SingleTop</p>
+<h3 id="Intent-FLAG-ACTIVITY-NO-HISTORY"><a href="#Intent-FLAG-ACTIVITY-NO-HISTORY" class="headerlink" title="Intent.FLAG_ACTIVITY_NO_HISTORY"></a>Intent.FLAG_ACTIVITY_NO_HISTORY</h3><p>声明为该模式的Activity，每次启动新的Activity时，该Activity均会消失，即不存在任务栈中</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  &lt;/p&gt;
-&lt;p&gt;##在AndroidMainfest里声明&lt;/p&gt;
-&lt;p&gt;###Standard&lt;br&gt;这是Activity的默认启动模式，采用这种启动模式
+&lt;h2 id=&quot;在AndroidMainfest里声明&quot;&gt;&lt;a href=&quot;#在AndroidMainfest里声明&quot; class=&quot;header
     
     </summary>
     
@@ -110,9 +107,9 @@
     <link href="http://yoursite.com/2017/07/13/android%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%9C%BA%E6%99%AF/"/>
     <id>http://yoursite.com/2017/07/13/android内存泄漏场景/</id>
     <published>2017-07-13T15:24:33.782Z</published>
-    <updated>2017-07-13T15:27:18.412Z</updated>
+    <updated>2017-07-16T11:38:06.614Z</updated>
     
-    <content type="html"><![CDATA[<p>在开发过程中，经常发生Android的内存泄漏，如以下几种：</p>
+    <content type="html"><![CDATA[<p>在开发过程中，经常发生Android的内存泄漏，如以下几种：  </p>
 <h3 id="一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask"><a href="#一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask" class="headerlink" title="一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask"></a>一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask</h3><p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public class SyncTaskDemoActivity extends Activity &#123;  </div><div class="line">    private int today = 0;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;  </div><div class="line">        super.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line"></div><div class="line">        // 异步执行任务  </div><div class="line">        new AsyncTask&lt;Object, Void, Boolean&gt;() &#123;  </div><div class="line">            @Override  </div><div class="line">            protected void onPreExecute() &#123;  </div><div class="line">                super.onPreExecute();  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            @Override  </div><div class="line">            protected Boolean doInBackground(Object... params) &#123;  </div><div class="line">                // do something in backfround  </div><div class="line">                // 长时间的耗时  </div><div class="line">                while (true) &#123;  </div><div class="line">                    today++;  </div><div class="line">                    if (today &gt; 100000)  </div><div class="line">                        break;  </div><div class="line">                &#125;  </div><div class="line">                return true;  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            @Override  </div><div class="line">            protected void onPostExecute(Boolean result) &#123;  </div><div class="line">                super.onPostExecute(result);  </div><div class="line">                if (result) &#123;  </div><div class="line">                    // success do something  </div><div class="line">                &#125; else &#123;  </div><div class="line">                    // error  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">        &#125;.execute();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>修改后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">public class SyncTaskDemoActivity extends Activity &#123;  </div><div class="line">    private int today = 0;  </div><div class="line">    private AsyncTask mAsyncTask;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;  </div><div class="line">        super.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line">  </div><div class="line">        mAsyncTask = new AsyncTask&lt;Object, Void, Boolean&gt;() &#123;  </div><div class="line">            @Override  </div><div class="line">            protected void onPreExecute() &#123;  </div><div class="line">                super.onPreExecute();  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            @Override  </div><div class="line">            protected Boolean doInBackground(Object... params) &#123;  </div><div class="line">                // do something in backfround  </div><div class="line">                // 长时间的耗时  </div><div class="line">                while (true) &#123;  </div><div class="line">                    if (cancel(true))  </div><div class="line">                        break;  </div><div class="line">                    today++;  </div><div class="line">                    if (today &gt; 100000)  </div><div class="line">                        break;  </div><div class="line">                &#125;  </div><div class="line">                return true;  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            @Override  </div><div class="line">            protected void onPostExecute(Boolean result) &#123;  </div><div class="line">                super.onPostExecute(result);  </div><div class="line">                if (result) &#123;  </div><div class="line">                    // success do something  </div><div class="line">                &#125; else &#123;  </div><div class="line">                    // error  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">  </div><div class="line">            @Override  </div><div class="line">            protected void onCancelled() &#123;  </div><div class="line">                super.onCancelled();  </div><div class="line">            &#125;  </div><div class="line">        &#125;;  </div><div class="line">        // 异步执行任务  </div><div class="line">        mAsyncTask.execute();  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    protected void onDestroy() &#123;  </div><div class="line">        super.onDestroy();  </div><div class="line">        mAsyncTask.cancel(true);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>解决办法：继承该类，并声明为静态私有，因为静态私有类不持有外部类的引用，对于AsyncTask可以执行cancle方法</p>
@@ -125,8 +122,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;在开发过程中，经常发生Android的内存泄漏，如以下几种：&lt;/p&gt;
-&lt;h3 id=&quot;一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask&quot;&gt;&lt;a href=&quot;#一、匿名内部类持有外部类的引用，如常用的Thread、Handler和Asy
+      &lt;p&gt;在开发过程中，经常发生Android的内存泄漏，如以下几种：  &lt;/p&gt;
+&lt;h3 id=&quot;一、匿名内部类持有外部类的引用，如常用的Thread、Handler和AsyncTask&quot;&gt;&lt;a href=&quot;#一、匿名内部类持有外部类的引用，如常用的Thread、Handler和A
     
     </summary>
     
