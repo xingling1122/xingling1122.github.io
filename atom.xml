@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-14T08:12:05.407Z</updated>
+  <updated>2017-07-16T11:35:15.908Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Activity的启动模式总结</title>
+    <link href="http://yoursite.com/2017/07/16/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/07/16/Activity的启动模式总结/</id>
+    <published>2017-07-16T11:35:15.864Z</published>
+    <updated>2017-07-16T11:35:15.908Z</updated>
+    
+    <content type="html"><![CDATA[<p>Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  </p>
+<p>##在AndroidMainfest里声明</p>
+<p>###Standard<br>这是Activity的默认启动模式，采用这种启动模式每次均会创建新的实例，无可否认，这也是最常用的启动模式  </p>
+<p>###SingleTop<br>在启动时，系统会判断当前Activity所在的Task栈顶是否存在要启动的Activity，如果存在，则直接启动，否则创建新的Activity。使用情景：常用于接收到信息后显示的界面，如QQ后台接收到信息弹出Activity,如果一次来了10条信息，总不能启动10个Activity吧？所以该Activity需要声明这种启动方式。  </p>
+<p>###SingleTask<br>这种启动模式跟SingleTop很相似，不同的是，SingleTask的是系统会去检查当前整个任务栈，如果存在，则会将该栈里该Activity上面的所有Activity出栈，即该Activity移到了栈顶。如果要启动的Activity已经位于后台任务栈，则会把整个后台任务栈放到前台任务栈上面。使用情景：<br>主Activity  </p>
+<p>###SingleInstance<br>这种启动模式跟访问浏览器很相似，在很多个程序中访问浏览器时，如果当前浏览器没有打开，则打开浏览器，否则会在当前打开的浏览器里访问。<br>声明为SingleInstance的Activity会在一个新的任务栈里，而且该栈只存在这一个Activity（这就是SingleInstance）,整个系统就只会有这个实例，举例说如果应用A的任务栈中创建了该Activity,如果B也要启动该Activity,则不需要创建，两个应用共用该Activity实例。使用情景：需要与程序分离的界面，如呼叫来电界面，在Launcher中可能使用，反正几乎不会用到  </p>
+<p>##在Intent Flag里声明</p>
+<p>###Intent.FLAG_ACTIVITY_NEW_TASK<br>使用一个新的任务栈来启动该Activity,通常是在Service里启动的Activity,因为service不存在任务栈  </p>
+<p>###Intent.FLAG_ACTIVITY_SINGLE_TOP<br>类似SingleTop  </p>
+<p>###Intent.FLAG_ACTIVITY_CLEAR_TOP<br>类似SingleTop</p>
+<p>###Intent.FLAG_ACTIVITY_NO_HISTORY<br>声明为该模式的Activity，每次启动新的Activity时，该Activity均会消失，即不存在任务栈中</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  &lt;/p&gt;
+&lt;p&gt;##在AndroidMainfest里声明&lt;/p&gt;
+&lt;p&gt;###Standard&lt;br&gt;这是Activity的默认启动模式，采用这种启动模式
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Selector中的各种状态详解</title>
