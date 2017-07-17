@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-16T12:11:53.767Z</updated>
+  <updated>2017-07-17T01:41:00.194Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>命令行中使用adb命令时提示&quot;error:unknown host service&quot;的错误</title>
+    <link href="http://yoursite.com/2017/07/17/%E4%BD%BF%E7%94%A8adb%E7%9A%84%E9%94%99%E8%AF%AF/"/>
+    <id>http://yoursite.com/2017/07/17/使用adb的错误/</id>
+    <published>2017-07-17T01:35:03.630Z</published>
+    <updated>2017-07-17T01:41:00.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个错误通常是5037端口被手机助手占用，以下是解决办法：  </p>
+<h3 id="1-打开命令行，输入命令：netstat-ano-findstr-“5037”"><a href="#1-打开命令行，输入命令：netstat-ano-findstr-“5037”" class="headerlink" title="1. 打开命令行，输入命令：netstat -ano | findstr “5037”"></a>1. 打开命令行，输入命令：netstat -ano | findstr “5037”</h3><p>从以上命令的执行结果的第二列的冒号之后的就是端口号，最后一列就是进程的pid。根据该pid去任务管理器中查找对应的进程。</p>
+<h3 id="2-打开任务管理器，在菜单中的查看-gt-选择列中将PID勾选上，然后点击PID列的表头，让其递增排序便于根据pid找到进程名称。"><a href="#2-打开任务管理器，在菜单中的查看-gt-选择列中将PID勾选上，然后点击PID列的表头，让其递增排序便于根据pid找到进程名称。" class="headerlink" title="2. 打开任务管理器，在菜单中的查看-&gt;选择列中将PID勾选上，然后点击PID列的表头，让其递增排序便于根据pid找到进程名称。"></a>2. 打开任务管理器，在菜单中的查看-&gt;选择列中将PID勾选上，然后点击PID列的表头，让其递增排序便于根据pid找到进程名称。</h3><p>结束该进程</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个错误通常是5037端口被手机助手占用，以下是解决办法：  &lt;/p&gt;
+&lt;h3 id=&quot;1-打开命令行，输入命令：netstat-ano-findstr-“5037”&quot;&gt;&lt;a href=&quot;#1-打开命令行，输入命令：netstat-ano-findstr-“5037”&quot; c
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>取消SSH私钥的密码</title>
