@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-27T01:54:49.989Z</updated>
+  <updated>2017-07-27T02:21:23.883Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,19 +16,162 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>我的MVP实现</title>
+    <link href="http://yoursite.com/2017/07/27/%E6%88%91%E7%9A%84MVP%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2017/07/27/我的MVP实现/</id>
+    <published>2017-07-27T01:57:38.805Z</published>
+    <updated>2017-07-27T02:21:23.883Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实MVP的实现方式理解起来也比较简单，只需要把获取数据的过程，比如网络、本地数据获取交给P即Presenter去操作，然后把视图逻辑更新过程交给View去实现，至于Model，只是在Presenter完成数据的获取过程中完成实例化。</p>
+<h3 id="步骤一：接口IContract作为接口IPresenter和接口IView的合并"><a href="#步骤一：接口IContract作为接口IPresenter和接口IView的合并" class="headerlink" title="步骤一：接口IContract作为接口IPresenter和接口IView的合并"></a>步骤一：接口IContract作为接口IPresenter和接口IView的合并</h3><pre><code>public interface IHomeContract {
+    interface IView extends IFragmentBaseView&lt;IPresenter&gt; {
+        //更新列表数据
+        void updateHomeList(List list);
+        //上拉更新数据
+        void updateMoreList(List list);
+    }
+
+    interface IPresenter extends IBasePresenter {
+        void loadHomeData(int pageItems,OnResponseListener listener);
+        void loadMoreData(int currentPage,int pageItems,OnResponseListener listener);
+        List getAdverts();
+        List getNavigation();
+        List getFoods();
+        PrizeItem getPrize();
+    }
+}
+</code></pre><h3 id="步骤二：定义IPresenter实现类"><a href="#步骤二：定义IPresenter实现类" class="headerlink" title="步骤二：定义IPresenter实现类"></a>步骤二：定义IPresenter实现类</h3><pre><code>IHomeContract.IView homeView;
+DataFactory.RemoteDataFactoryInter factory;
+private List&lt;Advert&gt; adverts;
+private List&lt;NavigationItem&gt; navigationItems;
+private PrizeItem item;
+private List&lt;FoodItem&gt; foodItems;
+
+public HomePresenter(IHomeContract.IView homeView){
+    this.homeView = homeView;
+    this.factory  = DataManager.getRemoteDataFactory();
+}
+
+@Override
+public void loadHomeData(final int pageItems, final OnResponseListener listener) {
+    final List data = new ArrayList();
+    factory.getAdvert(new OnResponseListener&lt;AdvertResponse&gt;() {
+        @Override
+        public void onSuccess(AdvertResponse o) {
+            adverts = o.getData();
+            data.add(adverts);
+            factory.getNavigation(new OnResponseListener&lt;NavigationResponse&gt;() {
+                @Override
+                public void onSuccess(NavigationResponse o) {
+                    navigationItems = o.getData();
+                    data.add(navigationItems);
+                    factory.getPrize(new OnResponseListener&lt;PrizeResponse&gt;() {
+                        @Override
+                        public void onSuccess(PrizeResponse o) {
+                            item = o.getData();
+                            data.add(item);
+                            factory.getFood(1, pageItems, &quot;all&quot;, new OnResponseListener&lt;FoodResponse&gt;() {
+                                @Override
+                                public void onSuccess(FoodResponse o) {
+                                    foodItems = o.getData();
+                                    for (FoodItem foodItem:foodItems){
+                                        data.add(foodItem);
+                                    }
+                                    listener.onSuccess(data);
+                                }
+
+                                @Override
+                                public void onFail(int status, String errorMsg) {
+                                    listener.onFail(status,errorMsg);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onFail(int status, String errorMsg) {
+                            listener.onFail(status,errorMsg);
+                        }
+                    });
+                }
+
+                @Override
+                public void onFail(int status, String errorMsg) {
+                    listener.onFail(status,errorMsg);
+                }
+            });
+        }
+
+        @Override
+        public void onFail(int status, String errorMsg) {
+            listener.onFail(status,errorMsg);
+        }
+    });
+}
+
+@Override
+public void loadMoreData(int currentPage, int pageItems, final OnResponseListener listener) {
+    factory.getFood(currentPage, pageItems, &quot;all&quot;, new OnResponseListener&lt;FoodResponse&gt;() {
+        @Override
+        public void onSuccess(FoodResponse o) {
+            List&lt;FoodItem&gt; items = o.getData();
+            listener.onSuccess(items);
+        }
+
+        @Override
+        public void onFail(int status, String errorMsg) {
+            listener.onFail(status,errorMsg);
+        }
+    });
+}
+
+@Override
+public List getAdverts() {
+    return adverts;
+}
+
+@Override
+public List getNavigation() {
+    return navigationItems;
+}
+
+@Override
+public List getFoods() {
+    return foodItems;
+}
+
+@Override
+public PrizeItem getPrize() {
+    return item;
+}
+}
+</code></pre><h3 id="步骤三：让Fragment或Activity实现IView-这里就不列代码了"><a href="#步骤三：让Fragment或Activity实现IView-这里就不列代码了" class="headerlink" title="步骤三：让Fragment或Activity实现IView,这里就不列代码了"></a>步骤三：让Fragment或Activity实现IView,这里就不列代码了</h3><h3 id="步骤四：如开始所说，将视图更新和数据获取分离"><a href="#步骤四：如开始所说，将视图更新和数据获取分离" class="headerlink" title="步骤四：如开始所说，将视图更新和数据获取分离"></a>步骤四：如开始所说，将视图更新和数据获取分离</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实MVP的实现方式理解起来也比较简单，只需要把获取数据的过程，比如网络、本地数据获取交给P即Presenter去操作，然后把视图逻辑更新过程交给View去实现，至于Model，只是在Presenter完成数据的获取过程中完成实例化。&lt;/p&gt;
+&lt;h3 id=&quot;步骤一：接口I
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>常见架构模式MVP和MVC中M的处理方式</title>
     <link href="http://yoursite.com/2017/07/27/%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8FMVP%E5%92%8CMVC%E4%B8%ADM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/"/>
     <id>http://yoursite.com/2017/07/27/常见架构模式MVP和MVC中M的处理方式/</id>
     <published>2017-07-27T01:44:28.770Z</published>
-    <updated>2017-07-27T01:54:49.989Z</updated>
+    <updated>2017-07-27T02:22:00.200Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-利用JSON包处理"><a href="#1-利用JSON包处理" class="headerlink" title="1.利用JSON包处理"></a>1.利用JSON包处理</h3><p>这种方式需要导入JSON包，但却很方便，不需要自己做解析的过程。通常需要传入这个需要解析对象的TypeToken，不过这个M的各个字段需要跟网络接口的字段一致，不然解析的结果就为null或0。</p>
+    <content type="html"><![CDATA[<p>对于M，在解析网络JSON数据时我觉得可以有两种方式，一种是交给JSON框架去解析，另一种则是自己定义一个解析接口，自己做解析，也就是说把拿取数据的过程交给M自己去做。</p>
+<h3 id="1-利用JSON包处理"><a href="#1-利用JSON包处理" class="headerlink" title="1.利用JSON包处理"></a>1.利用JSON包处理</h3><p>这种方式需要导入JSON包，但却很方便，不需要自己做解析的过程。通常需要传入这个需要解析对象的TypeToken，不过这个M的各个字段需要跟网络接口的字段一致，不然解析的结果就为null或0。</p>
 <h3 id="2-利用解析接口自己做解析"><a href="#2-利用解析接口自己做解析" class="headerlink" title="2.利用解析接口自己做解析"></a>2.利用解析接口自己做解析</h3><p>这种情况一般很少有人用了，毕竟自己做解析比较麻烦，M的字段可以跟网络接口的字段不一样，毕竟解析过程是自己来做，解析的时候只需要传入Json数据，然后自己完成解析。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1-利用JSON包处理&quot;&gt;&lt;a href=&quot;#1-利用JSON包处理&quot; class=&quot;headerlink&quot; title=&quot;1.利用JSON包处理&quot;&gt;&lt;/a&gt;1.利用JSON包处理&lt;/h3&gt;&lt;p&gt;这种方式需要导入JSON包，但却很方便，不需要自己做解析的过程。通常
+      &lt;p&gt;对于M，在解析网络JSON数据时我觉得可以有两种方式，一种是交给JSON框架去解析，另一种则是自己定义一个解析接口，自己做解析，也就是说把拿取数据的过程交给M自己去做。&lt;/p&gt;
+&lt;h3 id=&quot;1-利用JSON包处理&quot;&gt;&lt;a href=&quot;#1-利用JSON包处理&quot; clas
     
     </summary>
     
