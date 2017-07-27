@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-17T01:41:00.194Z</updated>
+  <updated>2017-07-27T01:54:49.989Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见架构模式MVP和MVC中M的处理方式</title>
+    <link href="http://yoursite.com/2017/07/27/%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8FMVP%E5%92%8CMVC%E4%B8%ADM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/"/>
+    <id>http://yoursite.com/2017/07/27/常见架构模式MVP和MVC中M的处理方式/</id>
+    <published>2017-07-27T01:44:28.770Z</published>
+    <updated>2017-07-27T01:54:49.989Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-利用JSON包处理"><a href="#1-利用JSON包处理" class="headerlink" title="1.利用JSON包处理"></a>1.利用JSON包处理</h3><p>这种方式需要导入JSON包，但却很方便，不需要自己做解析的过程。通常需要传入这个需要解析对象的TypeToken，不过这个M的各个字段需要跟网络接口的字段一致，不然解析的结果就为null或0。</p>
+<h3 id="2-利用解析接口自己做解析"><a href="#2-利用解析接口自己做解析" class="headerlink" title="2.利用解析接口自己做解析"></a>2.利用解析接口自己做解析</h3><p>这种情况一般很少有人用了，毕竟自己做解析比较麻烦，M的字段可以跟网络接口的字段不一样，毕竟解析过程是自己来做，解析的时候只需要传入Json数据，然后自己完成解析。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-利用JSON包处理&quot;&gt;&lt;a href=&quot;#1-利用JSON包处理&quot; class=&quot;headerlink&quot; title=&quot;1.利用JSON包处理&quot;&gt;&lt;/a&gt;1.利用JSON包处理&lt;/h3&gt;&lt;p&gt;这种方式需要导入JSON包，但却很方便，不需要自己做解析的过程。通常
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>命令行中使用adb命令时提示&quot;error:unknown host service&quot;的错误</title>
