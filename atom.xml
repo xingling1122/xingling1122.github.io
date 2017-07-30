@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-27T02:21:23.883Z</updated>
+  <updated>2017-07-30T03:43:57.725Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,174 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序总结</title>
+    <link href="http://yoursite.com/2017/07/30/%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/07/30/排序总结/</id>
+    <published>2017-07-30T00:56:52.985Z</published>
+    <updated>2017-07-30T03:43:57.725Z</updated>
+    
+    <content type="html"><![CDATA[<p>这么多的排序算法着实让我头疼，没办法，这又是笔试面试必考题，所以我只能硬着头皮做了以下的总结，以便今后的复习：</p>
+<h3 id="1、插入排序"><a href="#1、插入排序" class="headerlink" title="1、插入排序"></a>1、插入排序</h3><p>“有序插入”，也就是将元素逐一插到有序序列中，保持序列有序，从而使有序序列的长度不断增加  </p>
+<h4 id="1-1、直接插入排序"><a href="#1-1、直接插入排序" class="headerlink" title="1.1、直接插入排序"></a>1.1、直接插入排序</h4><p>原理：<br>    在插入a[i]前，数组a的前半段a[0]~a[i-1]是有序段，后半段是无序段，插入前需为a[i]找到有序位置j，将a[i]插到j的位置上  </p>
+<p>源码：  </p>
+<pre><code>void Sinsert_sort(int a[],int n){ 
+    int x;  
+    for(int i =1;i&lt;n;i++){  
+        x = a[i];
+        for(int j=i-1;j&gt;=0&amp;&amp;x&lt;a[j];j--)
+            a[j+1]=a[j];
+        a[j+1]=x;
+    }
+}
+</code></pre><p>性能分析：<br>稳定<br>空间复杂度：O(1)<br>时间复杂度：O（n2)  </p>
+<h4 id="1-2、折半插入排序"><a href="#1-2、折半插入排序" class="headerlink" title="1.2、折半插入排序"></a>1.2、折半插入排序</h4><p>原理：<br>用二分查找方法为a[i]查找有序位置时，不像直接插入那样，边比较边移动元素，而是在查找到有序位置后将那些大于a[i]的元素一起右移  </p>
+<p>源码：  </p>
+<pre><code>void Binsert_sort(int a[],int n){
+    int left,right,mid,x;
+    for(int i=1;i&lt;n;i++){
+        x = a[i];
+        left=0,right=i-1;
+        while(left&lt;=right){
+            mid=(left+right)/2;
+            if(x&lt;a[mid]) right=mid-1;
+            else left=mid+1;
+        }
+        for(int j=i-1;j&gt;=left;j--)
+            a[j+1]=a[j];
+        a[left]=x;
+    }
+}
+</code></pre><p>性能分析：<br>稳定<br>空间复杂度：O(1)<br>时间复杂度：O(n2)  </p>
+<h4 id="1-3、希尔排序"><a href="#1-3、希尔排序" class="headerlink" title="1.3、希尔排序"></a>1.3、希尔排序</h4><p>原理：<br>又称“缩小增量”排序，选用一个由多个增量组成的由大到小排列的增量序列，分别用每个增量对数组进行插入排序，任何增量序列的最后一个增量必须为1  </p>
+<p>源码：  </p>
+<pre><code>void Shell_sort(int a[],int d[],int n,int t){
+    int j,k,x;
+    for(int h=0;h&lt;t;h++){
+        k=d[h];
+        for(int i=k;i&lt;n;i++){
+            for(x=a[i],j=i-k;j&gt;=0&amp;&amp;x&lt;a[j];j=j-k)
+                a[j+k]=a[j];
+            a[j+k]=x;
+        }
+    }
+}
+</code></pre><p>性能分析：<br>不稳定<br>根据增量序列的不一致，时间复杂度也不一致  </p>
+<h3 id="2、交换排序"><a href="#2、交换排序" class="headerlink" title="2、交换排序"></a>2、交换排序</h3><p>如果i<j而a[i]>a[j],即大数排在小数的前面，则称a[i]和a[j]构成”逆序”。排序的过程中若发现逆序，就交换他们的位置。 </j而a[i]></p>
+<h4 id="2-1、冒泡排序"><a href="#2-1、冒泡排序" class="headerlink" title="2.1、冒泡排序"></a>2.1、冒泡排序</h4><p>原理：<br>反复扫描数组a，比较两个相邻元素a[i]与a[i+1]的大小，若a[i]&gt;a[i+1]，就交换  </p>
+<p>源码：  </p>
+<pre><code>void buddle_sort(int a[],int n){
+    int x;
+    for(int j=0;j&lt;n-1;j++){
+        for(int i=n-2;i&gt;=j;i--){
+            if(a[i]&gt;a[j+1])
+                x=a[i],a[i]=a[i+1],a[i+1]=x;
+        }
+    }
+}  
+</code></pre><p>性能分析：<br>稳定<br>时间复杂度：O(n2)  </p>
+<h4 id="2-2、快速排序"><a href="#2-2、快速排序" class="headerlink" title="2.2、快速排序"></a>2.2、快速排序</h4><p>原理：<br>划分。  </p>
+<p>源码：  </p>
+<pre><code>void qksort(int a[],int i,int j){
+    int k;
+    if(i&lt;j){
+        partition(a,i,j,k);
+        qksort(a,i,k-1);
+        qksort(a,k+1,j);
+    }
+}
+void partition(int a[],int s,int t,int &amp;k){
+    int i,j,x;
+    x=a[s];
+    i=s;j=t;
+    do{
+        while((a[i]&gt;=x)&amp;&amp;(i&lt;j))
+            j--;
+        if(i&lt;j) a[i++]=a[j];
+        while((a[i]&lt;x)&amp;&amp;(i&lt;j))
+            i++;
+        if(i&lt;j) a[j--]=a[i];
+    }while(i&lt;j);
+    a[i]=x;
+    k=i;
+}  
+</code></pre><p>性能分析：<br>不稳定<br>空间复杂度：O(logn)<br>时间复杂度：O(nlogn)  </p>
+<h3 id="3、选择排序"><a href="#3、选择排序" class="headerlink" title="3、选择排序"></a>3、选择排序</h3><p>从n个元素中选出一个最小的元素，把它调到序列最前面，再从剩下的n-1个元素中选出最小元素,反复如此，可完成排序  </p>
+<h4 id="3-1、直接选择排序"><a href="#3-1、直接选择排序" class="headerlink" title="3.1、直接选择排序"></a>3.1、直接选择排序</h4><p>源码：  </p>
+<pre><code> void Select_sort(int a[],int n){
+    for (int i = 0; i &lt; n; i++) {  
+        int min = i; 
+        for (int j = i + 1; j &lt; n; j++) {  
+            if (a[min] &gt; a[j])  min = j; 
+
+        }  
+        if (i != min) {
+            int tmp = a[min];  
+            a[min] = a[i];  
+            a[i] = tmp;  
+        }  
+     } 
+} 
+</code></pre><p>性能分析：<br>不稳定<br>时间复杂度：O(n2)  </p>
+<h4 id="3-2、堆排序"><a href="#3-2、堆排序" class="headerlink" title="3.2、堆排序"></a>3.2、堆排序</h4><p>原理：<br>堆化（满足父大于子）、将最大元素换到尾部  </p>
+<p>源码：</p>
+<pre><code>void heap_sort(int a[],int n){
+    int i,x;
+    for(i=n/2;i&gt;=1;i--) heapify(a,i,n);
+    for(i=n;i&gt;1;i--){
+        x=a[1];
+        a[1]=a[i];
+        a[i]=x;
+        heapify(a,1,i-1);
+    }
+}
+void heapify(int a[],int i,int j){
+    int k,x;
+    k=2*i;
+    x=a[i];
+    while(k&lt;=j){
+        if(k&lt;j)
+            if(a[k]&lt;a[k+1]) k=k+1;
+        if(x&gt;=a[k]) break;
+        else a[i]=a[k],i=k,k=2*i;
+    }
+    a[i]=x;
+}
+</code></pre><p>性能分析：<br>不稳定<br>时间复杂度：O（nlogn） </p>
+<h3 id="4、归并排序"><a href="#4、归并排序" class="headerlink" title="4、归并排序"></a>4、归并排序</h3><p>反复将两个长度较短的有序段合并成一个有序段，直到数组中只含有一个有序段  </p>
+<p>源码：</p>
+<pre><code>void merge_sort(int a[],int i,int j){
+    int k;
+    if(i&lt;j){
+        k=(i+j)/2;
+        merge_sort(a,i,k);
+        merge_sort(a,k+1,j);
+        merge(a,i,k,k+1,j);
+    }
+}
+void merge(int a[],int p,int q,int s,int t){
+    int i,j,k,b[n];//n是已经定义的常量
+    i=p,j=s,k=p-1;
+    while((i&lt;=q)&amp;&amp;(j&lt;=t))
+        if(a[i]&lt;=a[j]) b[++k]=a[i++];
+        else b[++k]=a[j++];
+    while(i&lt;=q) b[++k]=a[i++];
+    while(j&lt;=t) b[++k]=a[j++];
+    for(i=p;i&lt;=t;i++) a[i]=b[i];
+}
+</code></pre><p>性能分析：<br>稳定<br>时间复杂度：O（nlogn）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这么多的排序算法着实让我头疼，没办法，这又是笔试面试必考题，所以我只能硬着头皮做了以下的总结，以便今后的复习：&lt;/p&gt;
+&lt;h3 id=&quot;1、插入排序&quot;&gt;&lt;a href=&quot;#1、插入排序&quot; class=&quot;headerlink&quot; title=&quot;1、插入排序&quot;&gt;&lt;/a&gt;1、插入排
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>我的MVP实现</title>
