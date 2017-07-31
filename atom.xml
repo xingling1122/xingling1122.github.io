@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-31T12:50:18.945Z</updated>
+  <updated>2017-07-31T13:02:08.810Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/30/%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/07/30/排序总结/</id>
     <published>2017-07-30T00:56:52.985Z</published>
-    <updated>2017-07-31T12:50:18.945Z</updated>
+    <updated>2017-07-31T13:02:08.810Z</updated>
     
     <content type="html"><![CDATA[<p>这么多的排序算法着实让我头疼，没办法，这又是笔试面试必考题，所以我只能硬着头皮做了以下的总结，以便今后的复习：</p>
 <h3 id="1、插入排序"><a href="#1、插入排序" class="headerlink" title="1、插入排序"></a>1、插入排序</h3><p>“有序插入”，也就是将元素逐一插到有序序列中，保持序列有序，从而使有序序列的长度不断增加  </p>
@@ -80,7 +80,7 @@
         }
     }
 }  
-</code></pre><p>性能分析：<br>稳定<br>时间复杂度：O(n2)  </p>
+</code></pre><p>性能分析：<br>稳定<br>空间复杂度：O(1)<br>时间复杂度：O(n2)  </p>
 <h4 id="2-2、快速排序"><a href="#2-2、快速排序" class="headerlink" title="2.2、快速排序"></a>2.2、快速排序</h4><p>原理：<br>划分。  </p>
 <p>源码：  </p>
 <pre><code>void qksort(int a[],int i,int j){
@@ -123,7 +123,7 @@ void partition(int a[],int s,int t,int &amp;k){
         }  
      } 
 } 
-</code></pre><p>性能分析：<br>不稳定<br>时间复杂度：O(n2)  </p>
+</code></pre><p>性能分析：<br>不稳定<br>空间复杂度：O（1）<br>时间复杂度：O(n2)  </p>
 <h4 id="3-2、堆排序"><a href="#3-2、堆排序" class="headerlink" title="3.2、堆排序"></a>3.2、堆排序</h4><p>原理：<br>堆化（满足父大于子）、将最大元素换到尾部  </p>
 <p>源码：</p>
 <pre><code>void heap_sort(int a[],int n){
@@ -148,7 +148,7 @@ void heapify(int a[],int i,int j){
     }
     a[i]=x;
 }
-</code></pre><p>性能分析：<br>不稳定<br>时间复杂度：O（nlogn） </p>
+</code></pre><p>性能分析：<br>不稳定<br>空间复杂度：O(1)<br>时间复杂度：O（nlogn） </p>
 <h3 id="4、归并排序"><a href="#4、归并排序" class="headerlink" title="4、归并排序"></a>4、归并排序</h3><p>反复将两个长度较短的有序段合并成一个有序段，直到数组中只含有一个有序段  </p>
 <p>源码：</p>
 <pre><code>void merge_sort(int a[],int i,int j){
@@ -170,7 +170,7 @@ void merge(int a[],int p,int q,int s,int t){
     while(j&lt;=t) b[++k]=a[j++];
     for(i=p;i&lt;=t;i++) a[i]=b[i];
 }
-</code></pre><p>性能分析：<br>稳定<br>时间复杂度：O（nlogn）</p>
+</code></pre><p>性能分析：<br>稳定<br>空间复杂度：O(n)<br>时间复杂度：O（nlogn）</p>
 ]]></content>
     
     <summary type="html">
