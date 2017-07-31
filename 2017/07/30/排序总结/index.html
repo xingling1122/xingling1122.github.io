@@ -44,7 +44,7 @@
     }
 }
 </code></pre><p>性能分析：<br>不稳定<br>根据增量序列的不一致，时间复杂度也不一致  </p>
-<h3 id="2、交换排序"><a href="#2、交换排序" class="headerlink" title="2、交换排序"></a>2、交换排序</h3><p>如果i<j而a[i]>a[j],即大数排在小数的前面，则称a[i]和a[j]构成”逆序”。排序的过程中若发现逆序，就交换他们的位置。 </j而a[i]></p>
+<h3 id="2、交换排序"><a href="#2、交换排序" class="headerlink" title="2、交换排序"></a>2、交换排序</h3><p>如果 “i &lt; j” 而 “a[i] &gt; a[j]”,即大数排在小数的前面，则称a[i]和a[j]构成”逆序”。排序的过程中若发现逆序，就交换他们的位置。 </p>
 <h4 id="2-1、冒泡排序"><a href="#2-1、冒泡排序" class="headerlink" title="2.1、冒泡排序"></a>2.1、冒泡排序</h4><p>原理：<br>反复扫描数组a，比较两个相邻元素a[i]与a[i+1]的大小，若a[i]&gt;a[i+1]，就交换  </p>
 <p>源码：  </p>
 <pre><code>void buddle_sort(int a[],int n){
