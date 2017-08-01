@@ -407,7 +407,7 @@ public PrizeItem getPrize() {
     <link href="http://yoursite.com/2017/07/16/Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2017/07/16/Activity的启动模式总结/</id>
     <published>2017-07-16T11:35:15.864Z</published>
-    <updated>2017-07-16T12:01:35.506Z</updated>
+    <updated>2017-08-01T08:49:06.076Z</updated>
     
     <content type="html"><![CDATA[<p>Activity启动时可声明启动模式，可在AndroidMainfest里声明，也可以通过Flag声明，分别如下：  </p>
 <h2 id="在AndroidMainfest里声明"><a href="#在AndroidMainfest里声明" class="headerlink" title="在AndroidMainfest里声明"></a>在AndroidMainfest里声明</h2><h3 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h3><p>这是Activity的默认启动模式，采用这种启动模式每次均会创建新的实例，无可否认，这也是最常用的启动模式  </p>
@@ -416,7 +416,7 @@ public PrizeItem getPrize() {
 <h3 id="SingleInstance"><a href="#SingleInstance" class="headerlink" title="SingleInstance"></a>SingleInstance</h3><p>这种启动模式跟访问浏览器很相似，在很多个程序中访问浏览器时，如果当前浏览器没有打开，则打开浏览器，否则会在当前打开的浏览器里访问。<br>声明为SingleInstance的Activity会在一个新的任务栈里，而且该栈只存在这一个Activity（这就是SingleInstance）,整个系统就只会有这个实例，举例说如果应用A的任务栈中创建了该Activity,如果B也要启动该Activity,则不需要创建，两个应用共用该Activity实例。使用情景：需要与程序分离的界面，如呼叫来电界面，在Launcher中可能使用，反正几乎不会用到  </p>
 <h2 id="在Intent-Flag里声明"><a href="#在Intent-Flag里声明" class="headerlink" title="在Intent Flag里声明"></a>在Intent Flag里声明</h2><h3 id="Intent-FLAG-ACTIVITY-NEW-TASK"><a href="#Intent-FLAG-ACTIVITY-NEW-TASK" class="headerlink" title="Intent.FLAG_ACTIVITY_NEW_TASK"></a>Intent.FLAG_ACTIVITY_NEW_TASK</h3><p>使用一个新的任务栈来启动该Activity,通常是在Service里启动的Activity,因为service不存在任务栈  </p>
 <h3 id="Intent-FLAG-ACTIVITY-SINGLE-TOP"><a href="#Intent-FLAG-ACTIVITY-SINGLE-TOP" class="headerlink" title="Intent.FLAG_ACTIVITY_SINGLE_TOP"></a>Intent.FLAG_ACTIVITY_SINGLE_TOP</h3><p>类似SingleTop  </p>
-<h3 id="Intent-FLAG-ACTIVITY-CLEAR-TOP"><a href="#Intent-FLAG-ACTIVITY-CLEAR-TOP" class="headerlink" title="Intent.FLAG_ACTIVITY_CLEAR_TOP"></a>Intent.FLAG_ACTIVITY_CLEAR_TOP</h3><p>类似SingleTop</p>
+<h3 id="Intent-FLAG-ACTIVITY-CLEAR-TOP"><a href="#Intent-FLAG-ACTIVITY-CLEAR-TOP" class="headerlink" title="Intent.FLAG_ACTIVITY_CLEAR_TOP"></a>Intent.FLAG_ACTIVITY_CLEAR_TOP</h3><p>类似SingleTask</p>
 <h3 id="Intent-FLAG-ACTIVITY-NO-HISTORY"><a href="#Intent-FLAG-ACTIVITY-NO-HISTORY" class="headerlink" title="Intent.FLAG_ACTIVITY_NO_HISTORY"></a>Intent.FLAG_ACTIVITY_NO_HISTORY</h3><p>声明为该模式的Activity，每次启动新的Activity时，该Activity均会消失，即不存在任务栈中</p>
 ]]></content>
     
