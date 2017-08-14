@@ -219,9 +219,10 @@ void merge(int a[],int p,int q,int s,int t){
     <link href="http://yoursite.com/2017/07/27/%E6%88%91%E7%9A%84MVP%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2017/07/27/我的MVP实现/</id>
     <published>2017-07-27T01:57:38.805Z</published>
-    <updated>2017-07-27T02:21:23.883Z</updated>
+    <updated>2017-08-14T08:58:10.109Z</updated>
     
     <content type="html"><![CDATA[<p>其实MVP的实现方式理解起来也比较简单，只需要把获取数据的过程，比如网络、本地数据获取交给P即Presenter去操作，然后把视图逻辑更新过程交给View去实现，至于Model，只是在Presenter完成数据的获取过程中完成实例化。</p>
+<p><img src="http://ot7p4tpwf.bkt.clouddn.com/17-8-14/10549098.jpg" alt=""></p>
 <h3 id="步骤一：接口IContract作为接口IPresenter和接口IView的合并"><a href="#步骤一：接口IContract作为接口IPresenter和接口IView的合并" class="headerlink" title="步骤一：接口IContract作为接口IPresenter和接口IView的合并"></a>步骤一：接口IContract作为接口IPresenter和接口IView的合并</h3><pre><code>public interface IHomeContract {
     interface IView extends IFragmentBaseView&lt;IPresenter&gt; {
         //更新列表数据
@@ -348,7 +349,7 @@ public PrizeItem getPrize() {
     <summary type="html">
     
       &lt;p&gt;其实MVP的实现方式理解起来也比较简单，只需要把获取数据的过程，比如网络、本地数据获取交给P即Presenter去操作，然后把视图逻辑更新过程交给View去实现，至于Model，只是在Presenter完成数据的获取过程中完成实例化。&lt;/p&gt;
-&lt;h3 id=&quot;步骤一：接口I
+&lt;p&gt;&lt;img src=&quot;ht
     
     </summary>
     
